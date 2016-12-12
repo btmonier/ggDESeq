@@ -74,3 +74,9 @@ library(ggDESeq)
 ggFourWay(data = dds, x.level = 'N052611', y.level = 'N080611', control = 'N61311', factor = 'cell')
 ```
 ![](plot-example-ggfourway.png)
+
+
+Getting help
+------------
+
+For additional information on these functions, please see the given documentation in the `ggDESeq` package by adding the `?` help operator before any of the given functions in this package or by using the `help()` function. 
