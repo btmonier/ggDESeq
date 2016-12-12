@@ -62,3 +62,15 @@ library(ggDESeq)
 ggVolcano(data = dds, padj = 0.05)
 ```
 ![](plot-example-ggvolcano.png)
+
+
+#### `ggFourWay()`
+
+`ggFourWay()` will generate a scatterplot that compares log fold changes between to treatments compared to a control for a given factor in an RNA seq experiment. This function allows the user to extract various elements from a `DESeq` object class which in turn, creates a temporary data frame to plot the necessary ggplot aesthetics. In order for this function to work, RNA seq experiments must have multiple factors and levels including treatments and controls. By having the recommended criteria, this function will extract the necessary data by exploiting the `contrast()` function from `DESeq2`. Data points will change color based on their log fold change value. Data points with 'extreme' values that exceed the default viewing frame of the plot will change character classes (i.e. substantiall large fold changes) will change shape characteristics. 
+
+``` r
+library(ggDESeq)
+
+ggFourWay(data = dds, x.level = 'N052611', y.level = 'N080611', control = 'N61311', factor = 'cell')
+```
+![](plot-example-ggfourway.png)
