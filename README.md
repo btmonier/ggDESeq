@@ -39,6 +39,6 @@ Since this package is currently in its 'infantile' stage, It contains only three
 * `ggVolcano()`
 * `ggFourWay()`
 
-## `ggMA()`
+##### `ggMA()`
 
-`ggMA()` will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts.   
+`ggMA()` will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts.    
