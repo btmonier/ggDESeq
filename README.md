@@ -31,14 +31,22 @@ Dependencies
 Since this package assumes that you have prior knowledge with RNA seq experimentation and `DESeq2`, it is mandatory that you not only have `DESeq2` already installed in your `R` environment, but also `ggplot2` for aesthetic rendering. `DESeq2` can be found on Bioconductor. For further information on `DESeq2` and Bioconductor in general, please visit the following [website](http://bioconductor.org/packages/release/bioc/html/DESeq2.html).
 
 
-Usage
------
+Disclaimer
+----------
 
 Since this package is currently in its 'infantile' stage, It contains only three visualization schemes:
 * `ggMA()`
 * `ggVolcano()`
 * `ggFourWay()`
 
-##### `ggMA()`
 
-`ggMA()` will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts.    
+`ggMA()`
+--------
+
+`ggMA()` will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts. In order to visualize this from a `DESeq` object class, the function extracts the necessary data by exploiting `DESeq`'s `results()` function and placing it into a temporary data frame. Data points that meet the user defined adjusted p-value parameters will be highlighted in red. Data points that have 'extreme' values (i.e. substantially large log fold changes) will change shape characteristics.
+
+``` r
+library(ggDESeq)
+
+ggMA(data = dds, padj = 0.05)
+```
