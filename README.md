@@ -29,3 +29,12 @@ Dependencies
 ------------
 
 Since this package assumes that you have prior knowledge with RNA seq experimentation and `DESeq2`, it is mandatory that you not only have `DESeq2` already installed in your `R` environment, but also `ggplot2` for aesthetic rendering. `DESeq2` can be found on Bioconductor. For further information on `DESeq2` and Bioconductor in general, please visit the following [website](http://bioconductor.org/packages/release/bioc/html/DESeq2.html).
+
+
+Usage
+-----
+
+Since this package is currently in its 'infantile' stage, It contains only three visualization schemes:
+* `ggMA()`
+* `ggVolcano()`
+* `ggFourWay()`
