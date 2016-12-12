@@ -49,7 +49,7 @@ library(ggDESeq)
 
 ggMA(data = dds, padj = 0.05)
 ```
-![](plot-example-ggma.png, width = 200)
+![](plot-example-ggma.png)
 
 
 #### `ggVolcano()`
@@ -61,4 +61,4 @@ library(ggDESeq)
 
 ggVolcano(data = dds, padj = 0.05)
 ```
-![](plot-example-ggvolcano.png, width=100)
+![](plot-example-ggvolcano.png)
