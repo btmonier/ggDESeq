@@ -42,7 +42,7 @@ Since this package is currently in its 'infantile' stage, It contains only three
 
 #### `ggMA()`
 
-`ggMA()` will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts. In order to visualize this from a `DESeq` object class, the function extracts the necessary data by exploiting `DESeq`'s `results()` function and placing it into a temporary data frame. Data points that meet the user defined adjusted p-value parameters will be highlighted in red. Data points that have 'extreme' values (i.e. substantially large log fold changes) will change shape characteristics.
+`ggMA()` will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts. In order to visualize this from a `DESeq` object class, the function extracts the necessary data by exploiting `DESeq2`'s `results()` function and placing it into a temporary data frame. Data points that meet the user defined adjusted p-value parameters will be highlighted in red. Data points that have 'extreme' values (i.e. substantially large log fold changes) will change shape characteristics.
 
 ``` r
 library(ggDESeq)
@@ -50,3 +50,15 @@ library(ggDESeq)
 ggMA(data = dds, padj = 0.05)
 ```
 ![](plot-example-ggma.png)
+
+
+#### `ggVolcano()`
+
+`ggVolcano()` will generate a volcano plot. This plot visualizes the variance between two samples in terms of gene expression values where the negative log of calculated p-values (y-axis) are a plotted against the log fold changes (x-axis). Similar to `ggMA()`, a `DESeq` object class is required in which the necessary data is extracted using the `result()` function from `DESeq2`. Data points that meet the user defined adjusted p-value parameters will be highlighted in red. Data points that have 'extreme' values (i.e. substantially large log fold changes) will change shape characteristics.
+
+``` r
+library(ggDESeq)
+
+ggVolcano(data = dds, padj = 0.05)
+```
+![](plot-example-ggvolcano.png)
