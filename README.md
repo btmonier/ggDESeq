@@ -11,18 +11,10 @@ Installation
 The easiest way to obtain this package is to install `devtools` and pull the package contents directly from GitHub.
 
 ``` r
-# Load packages
-pack.man <- function(pkg) {
-  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
-  if (length(new.pkg)) 
-    install.packages(new.pkg, dependencies = TRUE)
-  sapply(pkg, require, character.only = TRUE)
-}
+# Development version from GitHub
+# install.packages('devtools')
 
-packages <- c('devtools')
-pack.man(packages)
-
-install.github('btmonier/ggDESeq')
+devtools::install.github('btmonier/ggDESeq')
 ```
 
 Dependencies
