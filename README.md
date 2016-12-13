@@ -53,7 +53,7 @@ library(ggDESeq)
 
 ggVolcano(data = dds, padj = 0.05)
 ```
-![](plot-w-ggvolcano.png)
+![](plot-example-ggvolcano.png)
 
 
 #### `ggFourWay()`
