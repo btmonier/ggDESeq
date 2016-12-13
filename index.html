@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ggDESeq by btmonier</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ggDESeq</h1>
+        <p>A visualization suite for DESeq related data frames that implements ggplot2 aesthetics.</p>
+
+        <p class="view"><a href="https://github.com/btmonier/ggDESeq">View the Project on GitHub <small>btmonier/ggDESeq</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/btmonier/ggDESeq/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/btmonier/ggDESeq/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/btmonier/ggDESeq">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="ggdeseq" class="anchor" href="#ggdeseq" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ggDESeq</h1>
+
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>The aim of <code>ggDESeq</code> is to make rapid visualizations of commonly used RNA seq plots derived from <code>DESeq</code> data sets a possibility. By implementing the aesthetic qualities of <code>ggplot2</code>, we are able to generate publication-worthy graphics. You need to provide the <code>DESeq</code>-related data frame with subsequent experimental conditions, and it takes care of the graphics and condtional statements.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>The easiest way to obtain this package is to install <code>devtools</code> and pull the package contents directly from GitHub.</p>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># Development version from GitHub</span>
+<span class="pl-c"># install.packages('devtools')</span>
+
+<span class="pl-e">devtools</span><span class="pl-k">::</span>install.github(<span class="pl-s"><span class="pl-pds">'</span>btmonier/ggDESeq<span class="pl-pds">'</span></span>)</pre></div>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>Since this package assumes that you have prior knowledge with RNA seq experimentation and <code>DESeq2</code>, it is mandatory that you not only have <code>DESeq2</code> already installed in your <code>R</code> environment, but also <code>ggplot2</code> for aesthetic rendering. <code>DESeq2</code> can be found on Bioconductor. For further information on <code>DESeq2</code> and Bioconductor in general, please visit the following <a href="http://bioconductor.org/packages/release/bioc/html/DESeq2.html">website</a>.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Since this package is currently in its 'infantile' stage, It contains only three visualization schemes:</p>
+
+<ul>
+<li><code>ggMA()</code></li>
+<li><code>ggVolcano()</code></li>
+<li><code>ggFourWay()</code></li>
+</ul>
+
+<h4>
+<a id="ggma" class="anchor" href="#ggma" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>ggMA()</code>
+</h4>
+
+<p><code>ggMA()</code> will generate an MA plot. This plot visualizes the variance between two samples in terms of gene expression values where logarithmic fold changes of count data are plotted against mean counts. In order to visualize this from a <code>DESeq</code> object class, the function extracts the necessary data by exploiting <code>DESeq2</code>'s <code>results()</code> function and placing it into a temporary data frame. Data points that meet the user defined adjusted p-value parameters will be highlighted in red. Data points that have 'extreme' values (i.e. substantially large log fold changes) will change shape characteristics.</p>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">ggDESeq</span>)
+
+ggMA(<span class="pl-v">data</span> <span class="pl-k">=</span> <span class="pl-smi">dds</span>, <span class="pl-v">padj</span> <span class="pl-k">=</span> <span class="pl-c1">0.05</span>)</pre></div>
+
+<p><img src="plot-example-ggma.png" alt=""></p>
+
+<h4>
+<a id="ggvolcano" class="anchor" href="#ggvolcano" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>ggVolcano()</code>
+</h4>
+
+<p><code>ggVolcano()</code> will generate a volcano plot. This plot visualizes the variance between two samples in terms of gene expression values where the negative log of calculated p-values (y-axis) are a plotted against the log fold changes (x-axis). Similar to <code>ggMA()</code>, a <code>DESeq</code> object class is required in which the necessary data is extracted using the <code>result()</code> function from <code>DESeq2</code>. Data points that meet the user defined adjusted p-value parameters will be highlighted in red. Data points that have 'extreme' values (i.e. substantially large log fold changes) will change shape characteristics.</p>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">ggDESeq</span>)
+
+ggVolcano(<span class="pl-v">data</span> <span class="pl-k">=</span> <span class="pl-smi">dds</span>, <span class="pl-v">padj</span> <span class="pl-k">=</span> <span class="pl-c1">0.05</span>)</pre></div>
+
+<p><img src="plot-example-ggvolcano.png" alt=""></p>
+
+<h4>
+<a id="ggfourway" class="anchor" href="#ggfourway" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>ggFourWay()</code>
+</h4>
+
+<p><code>ggFourWay()</code> will generate a scatterplot that compares log fold changes between to treatments compared to a control for a given factor in an RNA seq experiment. This function allows the user to extract various elements from a <code>DESeq</code> object class which in turn, creates a temporary data frame to plot the necessary ggplot aesthetics. In order for this function to work, RNA seq experiments must have multiple factors and levels including treatments and controls. By having the recommended criteria, this function will extract the necessary data by exploiting the <code>contrast()</code> function from <code>DESeq2</code>. Data points will change color based on their log fold change value. Data points with 'extreme' values that exceed the default viewing frame of the plot will change character classes (i.e. substantiall large fold changes) will change shape characteristics. </p>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">ggDESeq</span>)
+
+ggFourWay(<span class="pl-v">data</span> <span class="pl-k">=</span> <span class="pl-smi">dds</span>, <span class="pl-v">x.level</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>N052611<span class="pl-pds">'</span></span>, <span class="pl-v">y.level</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>N080611<span class="pl-pds">'</span></span>, <span class="pl-v">control</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>N61311<span class="pl-pds">'</span></span>, <span class="pl-v">factor</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>cell<span class="pl-pds">'</span></span>)</pre></div>
+
+<p><img src="plot-example-ggfourway.png" alt=""></p>
+
+<h2>
+<a id="getting-help" class="anchor" href="#getting-help" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting help</h2>
+
+<p>For additional information on these functions, please see the given documentation in the <code>ggDESeq</code> package by adding the <code>?</code> help operator before any of the given functions in this package or by using the <code>help()</code> function. </p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/btmonier">btmonier</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
